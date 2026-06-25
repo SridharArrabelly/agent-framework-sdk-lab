@@ -1,0 +1,14 @@
+[project]
+name = "copilot-sdk-lab"
+version = "0.1.0"
+description = "Hands-on examples for building AI agents with the GitHub Copilot SDK + Microsoft Agent Framework."
+requires-python = ">=3.12"
+dependencies = [
+    "agent-framework==1.9.0",
+    "agent-framework-github-copilot>=1.0.0rc1",
+    "azure-identity>=1.26.0b2",
+    "python-dotenv>=1.0.0",
+]
+
+[tool.uv]
+prerelease = "allow"
