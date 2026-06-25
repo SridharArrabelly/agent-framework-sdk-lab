@@ -2,7 +2,7 @@
 
 Hands-on Python examples for building AI agents with the **GitHub Copilot SDK** and the **Microsoft Agent Framework**.
 
-Each script in [examples/](examples/) maps 1:1 to a section of the dev blog post that inspired this lab:
+Each script in [copilot/](copilot/) maps 1:1 to a section of the dev blog post that inspired this lab:
 
 > [Build AI Agents with GitHub Copilot SDK and Microsoft Agent Framework](https://devblogs.microsoft.com/agent-framework/build-ai-agents-with-github-copilot-sdk-and-microsoft-agent-framework/) by Dmytro Struk, Microsoft Agent Framework dev blog.
 
@@ -40,27 +40,27 @@ az login
 
 ## Examples
 
-Run any example with `uv run python examples\<file>.py`.
+Run any example with `uv run python copilot\<file>.py`.
 
-### 1. Basic agent - [examples/01_basic_agent.py](examples/01_basic_agent.py)
+### 1. Basic agent - [copilot/01_basic_agent.py](copilot/01_basic_agent.py)
 Create a `GitHubCopilotAgent`, ask one question, print the answer. The minimum viable agent.
 
-### 2. Function tools - [examples/02_function_tools.py](examples/02_function_tools.py)
+### 2. Function tools - [copilot/02_function_tools.py](copilot/02_function_tools.py)
 Extend the agent with a typed Python function (`get_weather`). The framework converts the annotated signature into a tool definition the model can call.
 
-### 3. Streaming - [examples/03_streaming.py](examples/03_streaming.py)
+### 3. Streaming - [copilot/03_streaming.py](copilot/03_streaming.py)
 Stream the response token-by-token with `agent.run(prompt, stream=True)` instead of waiting for the full result.
 
-### 4. Multi-turn conversation - [examples/04_multi_turn.py](examples/04_multi_turn.py)
+### 4. Multi-turn conversation - [copilot/04_multi_turn.py](copilot/04_multi_turn.py)
 Use `agent.create_session()` and pass `session=...` on each `run()` call so the agent remembers earlier turns (it should recall "Alice" on the second prompt).
 
-### 5. Permissions - [examples/05_permissions.py](examples/05_permissions.py)
+### 5. Permissions - [copilot/05_permissions.py](copilot/05_permissions.py)
 The agent cannot run shell commands, touch files, or fetch URLs unless you approve. Wire `on_permission_request` to an interactive prompt that returns `PermissionDecisionApproveOnce()` or `PermissionDecisionDeniedInteractivelyByUser()` (both from `copilot.generated.rpc`).
 
-### 6. MCP servers - [examples/06_mcp_servers.py](examples/06_mcp_servers.py)
+### 6. MCP servers - [copilot/06_mcp_servers.py](copilot/06_mcp_servers.py)
 Attach a local stdio MCP server (`@modelcontextprotocol/server-filesystem`) and a remote HTTP server (`https://learn.microsoft.com/api/mcp`). The default 60s timeout is bumped to 300s so cold starts do not fail.
 
-### 7. Multi-agent workflow - [examples/07_multi_agent_workflow.py](examples/07_multi_agent_workflow.py)
+### 7. Multi-agent workflow - [copilot/07_multi_agent_workflow.py](copilot/07_multi_agent_workflow.py)
 Compose two agents in a sequential workflow: an **Azure OpenAI** writer drafts a tagline, then a **GitHub Copilot** reviewer critiques it. Streaming chunks are buffered per executor and flushed on `executor_completed`, so output is one clean block per agent. Requires `.env` + `az login`.
 
 ## Notes from the lab
