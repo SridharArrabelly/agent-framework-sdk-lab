@@ -15,7 +15,8 @@ The intent is **comparative learning**, not a polished sample gallery: each fold
 | Provider | Folder | Source post | Status |
 | --- | --- | --- | --- |
 | GitHub Copilot SDK | [copilot/](copilot/) | [Build AI Agents with GitHub Copilot SDK and Microsoft Agent Framework](https://devblogs.microsoft.com/agent-framework/build-ai-agents-with-github-copilot-sdk-and-microsoft-agent-framework/) | Done |
-| Claude Agent SDK | `claude/` | [Build AI Agents with Claude Agent SDK and Microsoft Agent Framework](https://devblogs.microsoft.com/agent-framework/build-ai-agents-with-claude-agent-sdk-and-microsoft-agent-framework/) | Planned |
+| Claude Agent SDK | [claude/](claude/) | [Build AI Agents with Claude Agent SDK and Microsoft Agent Framework](https://devblogs.microsoft.com/agent-framework/build-ai-agents-with-claude-agent-sdk-and-microsoft-agent-framework/) | Planned |
+| OpenAI Agents SDK | [openai/](openai/) | Awaiting post in the series | Reserved |
 | Future posts in the series | per-folder | TBD | As they ship |
 
 ## Repo layout
@@ -24,6 +25,7 @@ The intent is **comparative learning**, not a polished sample gallery: each fold
 agent-framework-sdk-lab/
   copilot/              # GitHub Copilot SDK examples (01..07)
   claude/               # (planned) Claude Agent SDK examples
+  openai/               # (reserved) OpenAI Agents SDK examples
   .env.example          # provider-specific env vars (currently Azure OpenAI for copilot/07)
   pyproject.toml        # uv-managed deps for every provider in this repo
   README.md             # this file
@@ -86,9 +88,13 @@ az login
 - `agent_framework.openai.OpenAIChatClient` is the unified client. When `AZURE_OPENAI_ENDPOINT` is set and a `credential` is supplied, it operates in Azure OpenAI mode. There is no separate `AzureOpenAIChatClient`.
 - For the multi-agent workflow, `Workflow.run(prompt, stream=True)` emits one `output` event per streamed chunk (with `event.data.text`) and one `executor_completed` event per agent. Group chunks by `executor_id` and flush on completion.
 
-### Claude Agent SDK -> `claude/` (planned)
+### Claude Agent SDK -> [claude/](claude/) (planned)
 
 Will adapt [Build AI Agents with Claude Agent SDK and Microsoft Agent Framework](https://devblogs.microsoft.com/agent-framework/build-ai-agents-with-claude-agent-sdk-and-microsoft-agent-framework/) once worked through. Same numbered structure (`01_basic_agent.py` ... `07_multi_agent_workflow.py`) so it lines up with `copilot/`.
+
+### OpenAI Agents SDK -> [openai/](openai/) (reserved)
+
+Placeholder for an OpenAI Agents SDK adaptation in the same shape, once the Microsoft Agent Framework dev blog publishes an equivalent post in this series.
 
 ## Reference
 
